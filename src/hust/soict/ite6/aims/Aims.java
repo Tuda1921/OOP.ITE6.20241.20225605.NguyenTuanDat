@@ -1,7 +1,7 @@
 package hust.soict.ite6.aims;
 
 import hust.soict.ite6.aims.cart.Cart;
-import hust.soict.ite6.aims.disc.DigitalVideoDisc;
+import hust.soict.ite6.aims.media.DigitalVideoDisc;
 
 public class Aims {
     public static void main(String[] args){
@@ -16,8 +16,6 @@ public class Aims {
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin",
                 "Animation", 18.99f);
         anOrder.addDigitalVideoDisc(dvd3);
-
-
 
         // In tổng chi phí của các DVD trong giỏ hàng
         System.out.println("Total Cost is: ");

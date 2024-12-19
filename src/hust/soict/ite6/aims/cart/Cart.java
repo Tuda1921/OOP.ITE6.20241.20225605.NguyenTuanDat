@@ -4,13 +4,14 @@ import java.util.ArrayList;
 
 import hust.soict.ite6.aims.media.Media;
 import hust.soict.ite6.aims.media.DigitalVideoDisc;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 public class Cart extends Media{
     public static final int MAX_NUMBERS_ORDERED = 20;
     private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
     public Cart() {}
     public void addMedia(Media media) {
-        if (itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
+        if (itemsOrdered.size() < MAX_NUMBERS_ORDERED && media != null) {
             itemsOrdered.add(media);
             System.out.println("Added: " + media.getTitle());
         } else {
@@ -71,9 +72,17 @@ public class Cart extends Media{
             System.out.println("No DVD found with title \"" + title + "\"");
         }
     }
-    public Media[] getItemsOrdered() {
-        return itemsOrdered.toArray(new Media[0]);
+	public ObservableList<Media> getItemsOrdered() {
+        return FXCollections.observableArrayList(itemsOrdered);
     }
 
+	public String placeOrder() {
+        if (itemsOrdered.isEmpty()) {
+            return "Your cart is empty!";
+        } else {
+            itemsOrdered.clear();
+            return "Order created!\n" + "Now your cart will be empty!";
+        }
+    }
 
 }

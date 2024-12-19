@@ -10,7 +10,16 @@ public class Book extends Media{
 		super();
 		this.authors = authors;
 	}
-	private void addAuthor(String authorName) {
+
+	public Book(int id, String title, String category, float cost) {
+        super(id, title, category, cost);
+    }
+
+	public Book(String title, String category, float cost) {
+		super(title, category, cost);
+	}
+
+	public void addAuthor(String authorName) {
 		if (authors.contains(authorName) != true)
 			authors.add(authorName);
 	}

@@ -2,6 +2,7 @@ package hust.soict.ite6.aims.media;
 
 import java.util.Comparator;
 import java.util.Objects;
+import hust.soict.ite6.aims.exception.PlayerException;
 
 public class Media {
     protected int id;
@@ -13,23 +14,32 @@ public class Media {
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
     
     public Media() {
+        super();
         // TODO Auto-generated constructor stub
     }
+    public Media(int id, String title, String category, float cost) {
+        this.id = id;
+        this.title = title;
+        this.category = category;
+        this.cost = cost;
+    }
 
+    public Media(String title, String category, float cost) {
+        this.title = title;
+        this.category = category;
+        this.cost = cost;
+    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
-
-        if (obj == null || getClass() != obj.getClass()) {
+        if (obj == null || !(obj instanceof Media)) {
             return false;
         }
-
         Media other = (Media) obj;
-        return Objects.equals(title, other.title);
+        return this.getTitle() != null && this.getTitle().equals(other.getTitle());
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(title);
@@ -67,6 +77,9 @@ public class Media {
         this.cost = cost;
     }
 
+    public String playGUI() throws PlayerException {
+        return "Playing media";
+    }
     // MediaComparatorByCostTitle class - non-public
     static class MediaComparatorByCostTitle implements Comparator<Media> {
         @Override
